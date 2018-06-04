@@ -1,3 +1,14 @@
+# SunGameEngine
+A demo javascript engine demonstrates how to build a javascript engine on Android platform based on [v8](https://github.com/v8/v8) and [openGL ES](https://www.khronos.org/opengles/).
+
+1.git clone https://github.com/cstsinghua/SunGameEngine.git;
+
+2.enter app/src/main/cpp/static_lib directory,unzip v8_arm_arm64.zip,then copy all subdirs(arm64-v8a, armeabi-v7a, include, v8_src_include) to app/src/main/cpp directory(overwrite the old files);
+
+3.open Android studio(version 3.1 is recommended),open and load this project;
+
+4.run it and view the result.
+
 # 前言
 本文旨在介绍如何开发一个用于Android平台的JS game engine。即可以通过JS编写游戏UI和业务逻辑代码。与业界已有的[Cocos2d-JS](http://www.cocos.com/docs/js/1-about-cocos2d-js/1-1-a-brief-history/zh.html)引擎的原理类似。但本引擎基于OpenGL和google的[v8 js engine](https://github.com/v8/v8)。
 
