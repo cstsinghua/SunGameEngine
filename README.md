@@ -7,7 +7,7 @@
 该库的思路大致如下：
 1. 初始化的时候，进入C++的代码的main函数(在fluff.cc里面)，在里面执行runGame函数：
 	![](https://i.imgur.com/pBoP235.png)
-2. 在initFluff函数内部，将封装OpenGL的C++函数通过v8接口暴露给JS，也就是JS脚本里面就可以直接使用暴露出来的接口，相当于在JS里面可以直接require或者import这些类和函数，直接调用即可(类似libtolua.so和device插件里面luaintf干的事)；
+2. 在initFluff函数内部，将封装OpenGL的C++函数通过v8接口暴露给JS，也就是JS脚本里面就可以直接使用暴露出来的接口，相当于在JS里面可以直接require或者import这些类和函数，直接调用即可(类似libtolua.so和device插件里面使用到的依赖库[lua-intf](https://github.com/SteveKChiu/lua-intf)干的事)；
 3. executeScript在uitl.cc里面，就是加载JS的代码入口，界面UI和业务逻辑用js编写，在js文件里面，这将入口的js脚本加载，然后执行js的入口函数(callFunction去执行onload)。对比一下就是，当前公司引擎libbabe.so，加载之后会去加载main.lua并执行main.lua的入口函数，从而就把整个流程串起来了。
 
 **Note：Fluff库是2010年编写的，当时的v8的版本比较老了，现在v8的API有较大变动，因此留意。此外，该库使用的是openGL 1.0，而当前PC端主流的版本是openGL 3.x和4.x，移动平台主流版本是openGL ES 2.0和openGL ES 3.x**
