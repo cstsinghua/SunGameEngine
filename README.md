@@ -1,5 +1,5 @@
 # SunGameEngine
-A demo javascript engine demonstrates how to build a javascript engine on Android platform based on [v8](https://github.com/v8/v8) and [openGL ES](https://www.khronos.org/opengles/).
+A demo javascript game engine demonstrates how to build a javascript game engine on Android platform based on [v8](https://github.com/v8/v8) and [openGL ES](https://www.khronos.org/opengles/).
 
 1.git clone https://github.com/cstsinghua/SunGameEngine.git;
 
