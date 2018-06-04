@@ -114,6 +114,18 @@ void js_draw(const FunctionCallbackInfo<Value> &args) {
     gl_draw();
 }
 
+// Extracts a C string from a V8 Utf8Value.
+const char* ToCString(const v8::String::Utf8Value& value) {
+    return *value ? *value : "<string conversion failed>";
+}
+
+void js_log(const FunctionCallbackInfo<Value> &args) {
+    // LOGI("js log:%d",args.Length());
+    String::Utf8Value utf8(isolate, args[0]);
+    const char* cstr = ToCString(utf8);
+    LOGI("js log:%s",cstr);
+}
+
 Isolate::CreateParams create_params;
 
 void initv8() {
@@ -129,6 +141,9 @@ void initv8() {
     HandleScope handle_scope(isolate);
 
     Local<ObjectTemplate> global = ObjectTemplate::New(isolate);
+    global->Set(String::NewFromUtf8(isolate, "log", NewStringType::kNormal)
+                        .ToLocalChecked(),
+                FunctionTemplate::New(isolate,js_log));
     global->Set(String::NewFromUtf8(isolate, "draw", NewStringType::kNormal)
                         .ToLocalChecked(),
                 FunctionTemplate::New(isolate,js_draw));
